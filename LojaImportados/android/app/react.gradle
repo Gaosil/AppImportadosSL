@@ -1,0 +1,56 @@
+// File: android/app/react.gradle
+
+import org.apache.tools.ant.taskdefs.condition.Os
+
+def config = project.hasProperty("react") ? project.react : []
+
+def cliPath = config.cliPath ?: "node_modules/react-native/cli.js"
+def entryFile = config.entryFile ?: "index.js"
+
+afterEvaluate {
+    android.applicationVariants.all { def variant ->
+        def targetName = variant.name.capitalize()
+        def bundleAssetName = config.bundleAssetName ?: "index.android.bundle"
+        def bundleCommand = config.bundleCommand ?: "bundle"
+
+        def jsBundleDir = file("$buildDir/generated/assets/react/${variant.dirName}")
+        def resourcesDir = file("$buildDir/generated/res/react/${variant.dirName}")
+
+        def jsBundleFile = file("$jsBundleDir/$bundleAssetName")
+
+        def bundleTask = tasks.create(
+            name: "bundle${targetName}JsAndAssets",
+            type: Exec) {
+            group = "react"
+            description = "Bundle JS and assets for ${targetName}."
+
+            inputs.files fileTree(dir: "src/main/assets", include: "**/*")
+            outputs.dir jsBundleDir
+            outputs.dir resourcesDir
+
+            doFirst {
+                jsBundleDir.mkdirs()
+                resourcesDir.mkdirs()
+            }
+
+            commandLine "node", cliPath, bundleCommand, "--platform", "android", "--dev", "false", "--reset-cache", "--entry-file", entryFile, "--bundle-output", jsBundleFile, "--assets-dest", resourcesDir
+        }
+
+        variant.mergeAssets.doLast {
+            copy {
+                from(jsBundleDir)
+                into("$buildDir/intermediates/assets/${variant.dirName}")
+            }
+        }
+
+        variant.processResources.doLast {
+            copy {
+                from(resourcesDir)
+                into("$buildDir/intermediates/res/merged/${variant.dirName}")
+            }
+        }
+
+        bundleTask.dependsOn variant.mergeAssets
+        variant.assemble.dependsOn bundleTask
+    }
+}

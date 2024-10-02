@@ -1,0 +1,3 @@
+rootProject.name = 'LojaImportados'
+include ':app'
+include ':android'

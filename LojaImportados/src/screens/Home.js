@@ -1,57 +1,54 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import CustomText from '../components/CustomText';
+import Layout from '../components/Layout';
 
-const Home = () => {
-  const navigation = useNavigation();
-  const products = useSelector((state) => state.products);
-
+const Home = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      {products.map((product) => (
+    <Layout>
+      <Image source={require('../../assets/logo.png')} style={styles.logo} />
+      <View style={styles.menuContainer}>
         <TouchableOpacity
-          key={product.id}
-          style={styles.productContainer}
-          onPress={() => navigation.navigate('Controle de Estoque', { productId: product.id })}
+          style={styles.menuButton}
+          onPress={() => navigation.navigate('Main', { screen: 'Adicionar Produto' })}
         >
-          {product.photo && <Image source={{ uri: product.photo }} style={styles.photo} />}
-          <Text style={styles.productName}>{product.name}</Text>
-          <Text style={styles.productDetail}>Estoque: {product.stock}</Text>
-          <Text style={styles.productDetail}>Cor: {product.color}</Text>
-          <Text style={styles.productDetail}>Tensão: {product.voltage}</Text>
+          <CustomText style={styles.menuButtonText}>Adicionar Produto</CustomText>
         </TouchableOpacity>
-      ))}
-    </View>
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => navigation.navigate('Main', { screen: 'Controle de Estoque' })}
+        >
+          <CustomText style={styles.menuButtonText}>Controle de Estoque</CustomText>
+        </TouchableOpacity>
+      </View>
+    </Layout>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
+  logo: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+    marginTop: 50,
   },
-  productContainer: {
-    padding: 10,
-    marginVertical: 5,
-    backgroundColor: '#f9f9f9',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ddd',
+  menuContainer: {
+    position: 'absolute',
+    bottom: 50,
+    width: '100%',
     alignItems: 'center',
   },
-  productName: {
-    fontSize: 18,
-    fontWeight: 'bold',
+  menuButton: {
+    width: '90%',
+    padding: 20,
+    marginVertical: 10,
+    backgroundColor: '#1E90FF',
+    borderRadius: 25,
+    alignItems: 'center',
   },
-  productDetail: {
-    fontSize: 14,
-    color: '#555',
-  },
-  photo: {
-    width: 100,
-    height: 100,
-    marginBottom: 10,
+  menuButtonText: {
+    color: '#ffffff',
+    fontSize: 20,
   },
 });
 
