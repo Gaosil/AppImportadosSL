@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 7.4.2" type="partial_results">
+    <map id="UnusedResources">
+        <location id="R.mipmap.ic_launcher_background"
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap/ic_launcher_background.png"/>
+        <entry
+            name="model"
+            string="color[colorPrimary(U),colorPrimaryDark(U),colorAccent(U)],mipmap[ic_launcher_round(U),ic_launcher_foreground(D),ic_launcher_background(D),ic_launcher(U)],string[app_name(U)],style[Theme_AppCompat_Light_DarkActionBar(R),AppTheme(U)];9^8^0^1^2;;;"/>
+        <location id="R.mipmap.ic_launcher_foreground"
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap/ic_launcher_foreground.png"/>
+    </map>
+
+</incidents>

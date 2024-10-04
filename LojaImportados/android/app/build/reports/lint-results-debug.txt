@@ -1,0 +1,102 @@
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\build.gradle:14: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdkVersion 34
+        ~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application runs on a version of Android that is more recent than
+   your targetSdkVersion specifies that it has been tested with, various
+   compatibility modes kick in. This ensures that your application continues
+   to work, but it may look out of place. For example, if the targetSdkVersion
+   is less than 14, your app may get an option button in the UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\build.gradle:46: Warning: A newer version of com.google.firebase:firebase-bom than 32.0.0 is available: 33.4.0 [GradleDependency]
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\build.gradle:50: Warning: A newer version of org.jetbrains.kotlin:kotlin-stdlib than 1.8.10 is available: 1.8.22 [GradleDependency]
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\build.gradle:51: Warning: A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.0 [GradleDependency]
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\build.gradle:52: Warning: A newer version of androidx.core:core-ktx than 1.10.1 is available: 1.13.1 [GradleDependency]
+    implementation 'androidx.core:core-ktx:1.10.1'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\build.gradle:53: Warning: A newer version of com.google.android.material:material than 1.10.0 is available: 1.12.0 [GradleDependency]
+    implementation 'com.google.android.material:material:1.10.0'
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\build.gradle:56: Warning: A newer version of com.android.tools:desugar_jdk_libs than 1.1.5 is available: 2.1.2 [GradleDependency]
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap\ic_launcher_background.png: Warning: The resource R.mipmap.ic_launcher_background appears to be unused [UnusedResources]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap\ic_launcher_foreground.png: Warning: The resource R.mipmap.ic_launcher_foreground appears to be unused [UnusedResources]
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-hdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-mdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-xhdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-xxhdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-xxxhdpi\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap\ic_launcher_round.png: Warning: Launcher icon used as round icon did not have a circular shape [IconLauncherShape]
+
+   Explanation for issues of type "IconLauncherShape":
+   According to the Android Design Guide
+   (https://material.io/design/iconography/) your launcher icons should "use a
+   distinct silhouette", a "three-dimensional, front view, with a slight
+   perspective as if viewed from above, so that users perceive some depth."
+
+   The unique silhouette implies that your launcher icon should not be a
+   filled square.
+
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-xxxhdpi\ic_launcher.png: Warning: The image ic_launcher.png varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpiic_launcher.png: 853x853 dp (1280x1280 px), mipmap-mdpiic_launcher.png: 1280x1280 dp (1280x1280 px), mipmap-xhdpiic_launcher.png: 640x640 dp (1280x1280 px), mipmap-xxhdpiic_launcher.png: 427x427 dp (1280x1280 px), mipmap-xxxhdpiic_launcher.png: 320x320 dp (1280x1280 px) [IconDipSize]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-xxxhdpi\ic_launcher_background.png: Warning: The image ic_launcher_background.png varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpiic_launcher_background.png: 853x853 dp (1280x1280 px), mipmap-mdpiic_launcher_background.png: 1280x1280 dp (1280x1280 px), mipmap-xhdpiic_launcher_background.png: 640x640 dp (1280x1280 px), mipmap-xxhdpiic_launcher_background.png: 427x427 dp (1280x1280 px), mipmap-xxxhdpiic_launcher_background.png: 320x320 dp (1280x1280 px) [IconDipSize]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-xxxhdpi\ic_launcher_foreground.png: Warning: The image ic_launcher_foreground.png varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpiic_launcher_foreground.png: 853x853 dp (1280x1280 px), mipmap-mdpiic_launcher_foreground.png: 1280x1280 dp (1280x1280 px), mipmap-xhdpiic_launcher_foreground.png: 640x640 dp (1280x1280 px), mipmap-xxhdpiic_launcher_foreground.png: 427x427 dp (1280x1280 px), mipmap-xxxhdpiic_launcher_foreground.png: 320x320 dp (1280x1280 px) [IconDipSize]
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap-xxxhdpi\ic_launcher_round.png: Warning: The image ic_launcher_round.png varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpiic_launcher_round.png: 853x853 dp (1280x1280 px), mipmap-mdpiic_launcher_round.png: 1280x1280 dp (1280x1280 px), mipmap-xhdpiic_launcher_round.png: 640x640 dp (1280x1280 px), mipmap-xxhdpiic_launcher_round.png: 427x427 dp (1280x1280 px), mipmap-xxxhdpiic_launcher_round.png: 320x320 dp (1280x1280 px) [IconDipSize]
+
+   Explanation for issues of type "IconDipSize":
+   Checks the all icons which are provided in multiple densities, all compute
+   to roughly the same density-independent pixel (dip) size. This catches
+   errors where images are either placed in the wrong folder, or icons are
+   changed to new sizes but some folders are forgotten.
+
+C:\Users\User\Documents\GitHub\lojaimportados\android\app\src\main\res\mipmap\ic_launcher_round.png: Warning: The following unrelated icon files have identical contents: ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png [IconDuplicates]
+
+   Explanation for issues of type "IconDuplicates":
+   If an icon is repeated under different names, you can consolidate and just
+   use one of the icons and delete the others to make your application
+   smaller. However, duplicated icons usually are not intentional and can
+   sometimes point to icons that were accidentally overwritten or accidentally
+   not updated.
+
+0 errors, 20 warnings

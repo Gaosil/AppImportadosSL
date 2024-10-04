@@ -1,17 +1,26 @@
 plugins {
     id 'com.android.application'
-    id 'com.google.gms.google-services' // Adicione esta linha
+    id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 34
+    namespace 'com.company.importados'
 
     defaultConfig {
         applicationId "com.company.importados"
-        minSdkVersion 21
-        targetSdkVersion 30
+        minSdkVersion 19
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true 
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true 
     }
 
     buildTypes {
@@ -20,17 +29,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
 }
 
 dependencies {
-    implementation platform('com.google.firebase:firebase-bom:33.3.0')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-firestore'
-    implementation 'com.google.firebase:firebase-auth'
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.10"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
 }
-
-// Apply the Google services plugin
-apply plugin: 'com.google.gms.google-services'
-
-// Apply the React Native plugin
-apply from: "../../node_modules/react-native/react.gradle"

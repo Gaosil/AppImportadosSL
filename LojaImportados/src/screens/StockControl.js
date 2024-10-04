@@ -8,13 +8,14 @@ import { db } from '../firebaseConfig';
 import Layout from '../components/Layout';
 import CustomText from '../components/CustomText';
 import { useFocusEffect } from '@react-navigation/native';
+import Toast from 'react-native-toast-message'; // Import Toast
 
 const colorTranslations = {
   red: 'Vermelho',
   blue: 'Azul',
   black: 'Preto',
   yellow: 'Amarelo',
-  gray: 'Cinza',
+  pink: 'Rosa',
 };
 
 const StockControl = () => {
@@ -102,7 +103,7 @@ const StockControl = () => {
           text1: 'Sucesso',
           text2: 'Produto excluído com sucesso!',
         });
-        hideDialog(); // Certifique-se de que o modal é fechado após a exclusão
+        hideDialog(); 
       } catch (error) {
         console.error('Erro ao excluir produto:', error);
         Toast.show({
@@ -138,7 +139,11 @@ const StockControl = () => {
                 <TextInput
                   style={styles.input}
                   value={product.stock.toString()}
-                  onChangeText={(text) => handleStockChange(product.id, text)}
+                  onChangeText={(text) => {
+                    if (/^\d+$/.test(text) || text === '') {
+                      handleStockChange(product.id, text);
+                    }
+                  }}
                   keyboardType="numeric"
                   placeholderTextColor="#ffffff"
                 />
@@ -177,18 +182,18 @@ const styles = StyleSheet.create({
   productContainer: {
     marginBottom: 20,
     padding: 15,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
     borderRadius: 10,
   },
   productName: {
-    fontSize: 22, // Increased font size
+    fontSize: 22, 
     marginBottom: 10,
-    color: '#ffffff', // White color for text
+    color: '#ffffff', 
   },
   productDetail: {
-    fontSize: 18, // Increased font size
+    fontSize: 18, 
     marginBottom: 5,
-    color: '#ffffff', // White color for text
+    color: '#ffffff', 
   },
   photo: {
     width: 100,
@@ -209,15 +214,15 @@ const styles = StyleSheet.create({
   },
   stockButtonText: {
     color: '#ffffff',
-    fontSize: 20, // Increased font size
+    fontSize: 20, 
   },
   input: {
-    height: 50, // Increased height
+    height: 50, 
     borderColor: 'gray',
     borderWidth: 1,
-    paddingHorizontal: 15, // Increased padding
-    color: '#ffffff', // White color for text
-    fontSize: 18, // Increased font size
+    paddingHorizontal: 15, 
+    color: '#ffffff', 
+    fontSize: 18, 
     textAlign: 'center',
     flex: 1,
   },

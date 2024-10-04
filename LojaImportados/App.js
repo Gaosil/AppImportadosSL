@@ -1,4 +1,5 @@
 import React from 'react';
+import { ActivityIndicator } from 'react-native'; 
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -6,7 +7,6 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from 'react-redux';
 import Toast from 'react-native-toast-message';
 import { useFonts, Fredoka_400Regular } from '@expo-google-fonts/fredoka';
-import AppLoading from 'expo-app-loading';
 import store from './src/store/store';
 import Home from './src/screens/Home';
 import AddProduct from './src/screens/AddProduct';
@@ -15,9 +15,17 @@ import StockControl from './src/screens/StockControl';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
+const MainStackNavigator = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="HomeScreen" component={Home} />
+    <Stack.Screen name="AddProductScreen" component={AddProduct} />
+    <Stack.Screen name="StockControlScreen" component={StockControl} />
+  </Stack.Navigator>
+);
+
 const DrawerNavigator = () => (
   <Drawer.Navigator
-    initialRouteName="Início"
+    initialRouteName="HomeScreen"
     screenOptions={{
       headerStyle: {
         backgroundColor: '#1E90FF',
@@ -28,8 +36,9 @@ const DrawerNavigator = () => (
       },
     }}
   >
-    <Drawer.Screen name="Adicionar Produto" component={AddProduct} />
-    <Drawer.Screen name="Controle de Estoque" component={StockControl} />
+    <Drawer.Screen name="HomeScreen" component={Home} options={{ title: 'Início' }} />
+    <Drawer.Screen name="AddProductScreen" component={AddProduct} options={{ title: 'Adicionar Produto' }} />
+    <Drawer.Screen name="StockControlScreen" component={StockControl} options={{ title: 'Controle de Estoque' }} />
   </Drawer.Navigator>
 );
 
@@ -39,34 +48,19 @@ const App = () => {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return <ActivityIndicator size="large" color="#0000ff" />;
   }
 
   return (
     <Provider store={store}>
       <PaperProvider>
         <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName="Home"
-            screenOptions={{
-              headerStyle: {
-                backgroundColor: '#1E90FF',
-              },
-              headerTintColor: '#ffffff',
-              headerTitleStyle: {
-                fontFamily: 'Fredoka_400Regular',
-              },
-            }}
-          >
-            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-            <Stack.Screen name="Main" component={DrawerNavigator} options={{ headerShown: false }} />
-          </Stack.Navigator>
+          <DrawerNavigator />
         </NavigationContainer>
-        <Toast ref={(ref) => Toast.setRef(ref)} />
+        <Toast />
       </PaperProvider>
     </Provider>
   );
 };
 
 export default App;
-

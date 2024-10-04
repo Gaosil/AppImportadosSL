@@ -10,13 +10,13 @@ const Home = ({ navigation }) => {
       <View style={styles.menuContainer}>
         <TouchableOpacity
           style={styles.menuButton}
-          onPress={() => navigation.navigate('Main', { screen: 'Adicionar Produto' })}
+          onPress={() => navigation.navigate('AddProductScreen')}
         >
           <CustomText style={styles.menuButtonText}>Adicionar Produto</CustomText>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.menuButton}
-          onPress={() => navigation.navigate('Main', { screen: 'Controle de Estoque' })}
+          onPress={() => navigation.navigate('StockControlScreen')}
         >
           <CustomText style={styles.menuButtonText}>Controle de Estoque</CustomText>
         </TouchableOpacity>

@@ -1,0 +1,13 @@
+#Fri Oct 04 08:47:37 BRT 2024
+path.3=classes3.dex
+path.2=classes2.dex
+path.1=classes1000.dex
+path.0=classes.dex
+base.3=C\:\\Users\\User\\Documents\\GitHub\\lojaimportados\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes3.dex
+base.2=C\:\\Users\\User\\Documents\\GitHub\\lojaimportados\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
+base.1=C\:\\Users\\User\\Documents\\GitHub\\lojaimportados\\android\\app\\build\\intermediates\\desugar_lib_dex\\release\\classes1000.dex
+base.0=C\:\\Users\\User\\Documents\\GitHub\\lojaimportados\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 7.4.2" type="incidents">
+
+    <incident
+        id="OldTargetApi"
+        severity="warning"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details.">
+        <fix-replace
+            description="Update targetSdkVersion to 35"
+            oldString="34"
+            replacement="35"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="14"
+            column="9"
+            startOffset="312"
+            endLine="14"
+            endColumn="28"
+            endOffset="331"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.firebase:firebase-bom than 32.0.0 is available: 33.4.0">
+        <fix-replace
+            description="Change to 33.4.0"
+            family="Update versions"
+            oldString="32.0.0"
+            replacement="33.4.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="46"
+            column="29"
+            startOffset="1016"
+            endLine="46"
+            endColumn="70"
+            endOffset="1057"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of org.jetbrains.kotlin:kotlin-stdlib than 1.8.10 is available: 1.8.22">
+        <fix-replace
+            description="Change to 1.8.22"
+            family="Update versions"
+            oldString="1.8.10"
+            replacement="1.8.22"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="50"
+            column="20"
+            startOffset="1269"
+            endLine="50"
+            endColumn="63"
+            endOffset="1312"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.appcompat:appcompat than 1.6.1 is available: 1.7.0">
+        <fix-replace
+            description="Change to 1.7.0"
+            family="Update versions"
+            oldString="1.6.1"
+            replacement="1.7.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="51"
+            column="20"
+            startOffset="1333"
+            endLine="51"
+            endColumn="56"
+            endOffset="1369"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.10.1 is available: 1.13.1">
+        <fix-replace
+            description="Change to 1.13.1"
+            family="Update versions"
+            oldString="1.10.1"
+            replacement="1.13.1"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="52"
+            column="20"
+            startOffset="1390"
+            endLine="52"
+            endColumn="51"
+            endOffset="1421"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.android.material:material than 1.10.0 is available: 1.12.0">
+        <fix-replace
+            description="Change to 1.12.0"
+            family="Update versions"
+            oldString="1.10.0"
+            replacement="1.12.0"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="53"
+            column="20"
+            startOffset="1442"
+            endLine="53"
+            endColumn="65"
+            endOffset="1487"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.android.tools:desugar_jdk_libs than 1.1.5 is available: 2.1.2">
+        <fix-replace
+            description="Change to 2.1.2"
+            family="Update versions"
+            oldString="1.1.5"
+            replacement="2.1.2"/>
+        <location
+            file="${:app*projectDir}/build.gradle"
+            line="56"
+            column="27"
+            startOffset="1641"
+            endLine="56"
+            endColumn="69"
+            endOffset="1683"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconLauncherShape"
+        severity="warning"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconDipSize"
+        severity="warning"
+        message="The image `ic_launcher.png` varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpi\ic_launcher.png: 853x853 dp (1280x1280 px), mipmap-mdpi\ic_launcher.png: 1280x1280 dp (1280x1280 px), mipmap-xhdpi\ic_launcher.png: 640x640 dp (1280x1280 px), mipmap-xxhdpi\ic_launcher.png: 427x427 dp (1280x1280 px), mipmap-xxxhdpi\ic_launcher.png: 320x320 dp (1280x1280 px)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher.png"/>
+    </incident>
+
+    <incident
+        id="IconDipSize"
+        severity="warning"
+        message="The image `ic_launcher_background.png` varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpi\ic_launcher_background.png: 853x853 dp (1280x1280 px), mipmap-mdpi\ic_launcher_background.png: 1280x1280 dp (1280x1280 px), mipmap-xhdpi\ic_launcher_background.png: 640x640 dp (1280x1280 px), mipmap-xxhdpi\ic_launcher_background.png: 427x427 dp (1280x1280 px), mipmap-xxxhdpi\ic_launcher_background.png: 320x320 dp (1280x1280 px)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_background.png"/>
+    </incident>
+
+    <incident
+        id="IconDipSize"
+        severity="warning"
+        message="The image `ic_launcher_foreground.png` varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpi\ic_launcher_foreground.png: 853x853 dp (1280x1280 px), mipmap-mdpi\ic_launcher_foreground.png: 1280x1280 dp (1280x1280 px), mipmap-xhdpi\ic_launcher_foreground.png: 640x640 dp (1280x1280 px), mipmap-xxhdpi\ic_launcher_foreground.png: 427x427 dp (1280x1280 px), mipmap-xxxhdpi\ic_launcher_foreground.png: 320x320 dp (1280x1280 px)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_foreground.png"/>
+    </incident>
+
+    <incident
+        id="IconDipSize"
+        severity="warning"
+        message="The image `ic_launcher_round.png` varies significantly in its density-independent (dip) size across the various density versions: mipmap-hdpi\ic_launcher_round.png: 853x853 dp (1280x1280 px), mipmap-mdpi\ic_launcher_round.png: 1280x1280 dp (1280x1280 px), mipmap-xhdpi\ic_launcher_round.png: 640x640 dp (1280x1280 px), mipmap-xxhdpi\ic_launcher_round.png: 427x427 dp (1280x1280 px), mipmap-xxxhdpi\ic_launcher_round.png: 320x320 dp (1280x1280 px)">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_round.png"/>
+    </incident>
+
+    <incident
+        id="IconDuplicates"
+        severity="warning"
+        message="The following unrelated icon files have identical contents: ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png, ic_launcher.png, ic_launcher_background.png, ic_launcher_foreground.png, ic_launcher_round.png">
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxxhdpi/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xxhdpi/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-xhdpi/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-mdpi/ic_launcher.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_round.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_foreground.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher_background.png"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/mipmap-hdpi/ic_launcher.png"/>
+    </incident>
+
+</incidents>

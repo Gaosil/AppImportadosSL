@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker';
+import { View, TextInput, Button, TouchableOpacity, Text, Image, StyleSheet, Platform } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import Toast from 'react-native-toast-message';
 import { addDoc, collection } from 'firebase/firestore';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db } from '../firebaseConfig';
 import CustomText from './CustomText';
 
-const colors = ['red', 'blue', 'black', 'yellow', 'gray'];
+const colors = ['red', 'blue', 'black', 'yellow', 'pink'];
 const voltages = ['110V', '220V'];
 
 const ProductForm = ({ onSubmit, navigation }) => {
@@ -26,10 +27,19 @@ const ProductForm = ({ onSubmit, navigation }) => {
       return;
     }
 
-    const product = { name, stock: parseInt(stock, 10), color, voltage, photo };
+    let photoURL = null;
+    if (photo) {
+      const storage = getStorage();
+      const response = await fetch(photo);
+      const blob = await response.blob();
+      const storageRef = ref(storage, `products/${Date.now()}`);
+      await uploadBytes(storageRef, blob);
+      photoURL = await getDownloadURL(storageRef);
+    }
+
+    const product = { name, stock: parseInt(stock, 10), color, voltage, photo: photoURL };
 
     try {
-      console.log('Adicionando produto:', product);
       await addDoc(collection(db, 'products'), product);
       Toast.show({
         type: 'success',
@@ -42,9 +52,8 @@ const ProductForm = ({ onSubmit, navigation }) => {
       setColor('');
       setVoltage('');
       setPhoto(null);
-      navigation.navigate('Início');
+      navigation.navigate('HomeScreen');
     } catch (error) {
-      console.error('Erro ao adicionar produto:', error);
       Toast.show({
         type: 'error',
         text1: 'Erro',
@@ -53,12 +62,17 @@ const ProductForm = ({ onSubmit, navigation }) => {
     }
   };
 
-  const selectPhoto = () => {
-    launchImageLibrary({ mediaType: 'photo' }, (response) => {
-      if (response.assets && response.assets.length > 0) {
-        setPhoto(response.assets[0].uri);
-      }
+  const selectPhoto = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
     });
+
+    if (!result.canceled) {
+      setPhoto(result.assets[0].uri);
+    }
   };
 
   return (
@@ -76,7 +90,11 @@ const ProductForm = ({ onSubmit, navigation }) => {
         style={styles.input}
         placeholder="Estoque"
         value={stock}
-        onChangeText={setStock}
+        onChangeText={(text) => {
+          if (/^\d+$/.test(text) || text === '') {
+            setStock(text);
+          }
+        }}
         keyboardType="numeric"
         placeholderTextColor="#ffffff"
       />
@@ -100,7 +118,8 @@ const ProductForm = ({ onSubmit, navigation }) => {
           </TouchableOpacity>
         ))}
       </View>
-      {photo && <Image source={{ uri: photo }} style={styles.photo} />}
+      {photo && Platform.OS !== 'web' && <Image source={{ uri: photo }} style={styles.photo} />}
+      {photo && Platform.OS === 'web' && <img src={photo} style={styles.photo} alt="Selected" />}
       <View style={styles.buttonContainer}>
         <Button title="Selecionar Foto" onPress={selectPhoto} />
         <View style={styles.buttonSpacer} />
@@ -116,18 +135,18 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   label: {
-    fontSize: 22, // Increased font size
+    fontSize: 22,
     marginBottom: 10,
-    color: '#ffffff', // White color for text
+    color: '#ffffff',
   },
   input: {
-    height: 50, // Increased height
+    height: 50,
     borderColor: 'gray',
-    borderBottomWidth: 1, // Only bottom border
+    borderBottomWidth: 1,
     marginBottom: 15,
-    paddingHorizontal: 15, // Increased padding
-    color: '#ffffff', // White color for text
-    fontSize: 18, // Increased font size
+    paddingHorizontal: 15,
+    color: '#ffffff',
+    fontSize: 18,
   },
   colorContainer: {
     flexDirection: 'row',
@@ -159,7 +178,7 @@ const styles = StyleSheet.create({
   },
   voltageText: {
     color: '#ffffff',
-    fontSize: 18, // Increased font size
+    fontSize: 18,
   },
   photo: {
     width: 100,
@@ -170,10 +189,10 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20, // Increased margin top
+    marginTop: 20,
   },
   buttonSpacer: {
-    width: 20, // Spacer width to increase space between buttons
+    width: 20,
   },
 });
 
